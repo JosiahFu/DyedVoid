@@ -1,0 +1,15 @@
+{
+  "fill_void_bottle": {
+    "subtitle": "subtitles.dyedvoid.fill_void_bottle",
+    "sounds": [
+      "dyedvoid:fill_void1",
+      "dyedvoid:fill_void2"
+    ]
+  },
+  "place_void_block": {
+    "sounds": [
+      "minecraft:block/beacon/ambient"
+    ]
+  }
+}
+

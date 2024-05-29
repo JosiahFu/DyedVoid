@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-29T12:14:27.878585153	DyedVoid/Model Definitions
+// 1.20.1	2024-05-29T15:50:53.965015706	DyedVoid/Model Definitions
 4f7e1de7195ba50a5c72d7a289f113e71a516276 assets/dyedvoid/models/block/light_gray_void.json
 3926b685b991435c8b1157013bc1d519d324f46f assets/dyedvoid/models/item/purple_void.json
 e95e9eb72db8602216d29264eaa0f334b98abdde assets/dyedvoid/blockstates/gray_void.json
@@ -34,6 +34,7 @@ a47ba31ec1505113ca443758600799c517209ba9 assets/dyedvoid/models/block/blue_void.
 ca5e0cdf62984d4eda6e3a402036003183d01f09 assets/dyedvoid/models/block/pink_void.json
 97431215b2d6bd37b5013b9e4785d7538fc834c0 assets/dyedvoid/models/block/white_void.json
 cd782965ee5a2de2ffb4ea4ba38375af690cdab5 assets/dyedvoid/blockstates/yellow_void.json
+789cf41b1536a6b70ac22acec134f69685de1e98 assets/dyedvoid/models/item/void_bottle.json
 c112faaf68a4af3f91c4148c058c2d61aa5d9f15 assets/dyedvoid/models/block/orange_void.json
 83340e8a70565f7c88ad5672b63c9303a67843d8 assets/dyedvoid/blockstates/magenta_void.json
 00e99e497f16325b8d882f7e026eab219a78b65d assets/dyedvoid/blockstates/blue_void.json

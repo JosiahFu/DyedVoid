@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "dyedvoid:black_void"
+    },
+    "%": {
+      "item": "minecraft:glow_ink_sac"
+    }
+  },
+  "pattern": [
+    "###",
+    "#%#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "dyedvoid:white_void"
+  },
+  "show_notification": true
+}

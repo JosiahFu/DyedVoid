@@ -1,0 +1,21 @@
+{
+  "block.dyedvoid.black_void": "Void",
+  "block.dyedvoid.blue_void": "Blue Void",
+  "block.dyedvoid.brown_void": "Brown Void",
+  "block.dyedvoid.cyan_void": "Cyan Void",
+  "block.dyedvoid.gray_void": "Gray Void",
+  "block.dyedvoid.green_void": "Green Void",
+  "block.dyedvoid.light_blue_void": "Light Blue Void",
+  "block.dyedvoid.light_gray_void": "Light Gray Void",
+  "block.dyedvoid.lime_void": "Lime Void",
+  "block.dyedvoid.magenta_void": "Magenta Void",
+  "block.dyedvoid.orange_void": "Orange Void",
+  "block.dyedvoid.pink_void": "Pink Void",
+  "block.dyedvoid.purple_void": "Purple Void",
+  "block.dyedvoid.red_void": "Red Void",
+  "block.dyedvoid.white_void": "Luminous Void",
+  "block.dyedvoid.yellow_void": "Yellow Void",
+  "item.dyedvoid.void_bottle": "Bottle of void",
+  "itemGroup.dyedvoid.group": "The Dyed Void",
+  "subtitles.dyedvoid.fill_void_bottle": "Bottle truly empties"
+}

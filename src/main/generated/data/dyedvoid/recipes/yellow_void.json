@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "dye_void_block",
+  "key": {
+    "#": {
+      "item": "dyedvoid:white_void"
+    },
+    "%": {
+      "item": "minecraft:yellow_dye"
+    }
+  },
+  "pattern": [
+    "###",
+    "#%#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "dyedvoid:yellow_void"
+  },
+  "show_notification": true
+}

@@ -5,12 +5,14 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -39,16 +41,24 @@ public class DyedVoid implements ModInitializer {
 		return registerBlockItem(block, new FabricItemSettings());
 	}
 
-	private static Block registerVoidBlock(String colorName) {
-		return register(colorName + "_void", new Block(FabricBlockSettings.create()
+	private static Block registerVoidBlock(String colorName, boolean luminant) {
+		FabricBlockSettings settings = FabricBlockSettings.create()
 				.emissiveLighting((state, world, pos) -> true)
+				.sounds(VOID_BLOCK_SOUND_GROUP)
+				.luminance(luminant ? 15 : 0);
+
+		return register(colorName + "_void", new Block(settings
 		));
 	}
 
+	private static Block registerVoidBlock(String colorName) {
+		return registerVoidBlock(colorName, true);
+	}
+
 	public static final Block WHITE_VOID_BLOCK = registerVoidBlock("white");
-	public static final Block BLACK_VOID_BLOCK = registerVoidBlock("black");
 	public static final Block LIGHT_GRAY_VOID_BLOCK = registerVoidBlock("light_gray");
 	public static final Block GRAY_VOID_BLOCK = registerVoidBlock("gray");
+	public static final Block BLACK_VOID_BLOCK = registerVoidBlock("black", false);
 	public static final Block BROWN_VOID_BLOCK = registerVoidBlock("brown");
 	public static final Block RED_VOID_BLOCK = registerVoidBlock("red");
 	public static final Block ORANGE_VOID_BLOCK = registerVoidBlock("orange");
@@ -63,9 +73,9 @@ public class DyedVoid implements ModInitializer {
 	public static final Block PINK_VOID_BLOCK = registerVoidBlock("pink");
 
 	public static final Item WHITE_VOID_ITEM = registerBlockItem(WHITE_VOID_BLOCK);
-	public static final Item BLACK_VOID_ITEM = registerBlockItem(BLACK_VOID_BLOCK);
 	public static final Item LIGHT_GRAY_VOID_ITEM = registerBlockItem(LIGHT_GRAY_VOID_BLOCK);
 	public static final Item GRAY_VOID_ITEM = registerBlockItem(GRAY_VOID_BLOCK);
+	public static final Item BLACK_VOID_ITEM = registerBlockItem(BLACK_VOID_BLOCK);
 	public static final Item BROWN_VOID_ITEM = registerBlockItem(BROWN_VOID_BLOCK);
 	public static final Item RED_VOID_ITEM = registerBlockItem(RED_VOID_BLOCK);
 	public static final Item ORANGE_VOID_ITEM = registerBlockItem(ORANGE_VOID_BLOCK);
@@ -79,28 +89,53 @@ public class DyedVoid implements ModInitializer {
 	public static final Item MAGENTA_VOID_ITEM = registerBlockItem(MAGENTA_VOID_BLOCK);
 	public static final Item PINK_VOID_ITEM = registerBlockItem(PINK_VOID_BLOCK);
 
+	public static final Item VOID_BOTTLE_ITEM = register("void_bottle", new Item(new FabricItemSettings()
+			.maxCount(16)
+			.recipeRemainder(Items.GLASS_BOTTLE)
+	));
+
+	public static final TagKey<Item> NO_GRAVITY_TAG = TagKey.of(RegistryKeys.ITEM, new Identifier(MOD_ID, "no_gravity"));
+
 	public static final ItemGroup ITEM_GROUP = FabricItemGroup.builder()
 			.icon(() -> new ItemStack(RED_VOID_ITEM))
 			.displayName(Text.translatable("itemGroup.dyedvoid.group"))
 			.entries((context, entries) -> {
-				 entries.add(WHITE_VOID_ITEM);
-				 entries.add(BLACK_VOID_ITEM);
-				 entries.add(LIGHT_GRAY_VOID_ITEM);
-				 entries.add(GRAY_VOID_ITEM);
-				 entries.add(BROWN_VOID_ITEM);
-				 entries.add(RED_VOID_ITEM);
-				 entries.add(ORANGE_VOID_ITEM);
-				 entries.add(YELLOW_VOID_ITEM);
-				 entries.add(LIME_VOID_ITEM);
-				 entries.add(GREEN_VOID_ITEM);
-				 entries.add(CYAN_VOID_ITEM);
-				 entries.add(LIGHT_BLUE_VOID_ITEM);
-				 entries.add(BLUE_VOID_ITEM);
-				 entries.add(PURPLE_VOID_ITEM);
-				 entries.add(MAGENTA_VOID_ITEM);
-				 entries.add(PINK_VOID_ITEM);
+				entries.add(VOID_BOTTLE_ITEM);
+				entries.add(LIGHT_GRAY_VOID_ITEM);
+				entries.add(WHITE_VOID_ITEM);
+				entries.add(GRAY_VOID_ITEM);
+				entries.add(BLACK_VOID_ITEM);
+				entries.add(BROWN_VOID_ITEM);
+				entries.add(RED_VOID_ITEM);
+				entries.add(ORANGE_VOID_ITEM);
+				entries.add(YELLOW_VOID_ITEM);
+				entries.add(LIME_VOID_ITEM);
+				entries.add(GREEN_VOID_ITEM);
+				entries.add(CYAN_VOID_ITEM);
+				entries.add(LIGHT_BLUE_VOID_ITEM);
+				entries.add(BLUE_VOID_ITEM);
+				entries.add(PURPLE_VOID_ITEM);
+				entries.add(MAGENTA_VOID_ITEM);
+				entries.add(PINK_VOID_ITEM);
 			})
 			.build();
+
+
+	public static final Identifier FILL_VOID_BOTTLE_ID = new Identifier("dyedvoid:fill_void_bottle");
+	public static final SoundEvent FILL_VOID_BOTTLE_SOUND_EVENT = SoundEvent.of(FILL_VOID_BOTTLE_ID);
+
+	public static final Identifier VOID_BLOCK_PLACE_ID = new Identifier("dyedvoid:place_void_block");
+	public static final SoundEvent VOID_BLOCK_PLACE_SOUND_EVENT = SoundEvent.of(VOID_BLOCK_PLACE_ID);
+
+	public static final BlockSoundGroup VOID_BLOCK_SOUND_GROUP = new BlockSoundGroup(
+			0.1f,
+			0.8f,
+			SoundEvents.INTENTIONALLY_EMPTY,
+			SoundEvents.INTENTIONALLY_EMPTY,
+			VOID_BLOCK_PLACE_SOUND_EVENT,
+			SoundEvents.INTENTIONALLY_EMPTY,
+			SoundEvents.INTENTIONALLY_EMPTY
+	);
 
 	@Override
 	public void onInitialize() {
@@ -108,7 +143,6 @@ public class DyedVoid implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Hello Fabric world!");
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "item_group"), ITEM_GROUP);
 	}
 }
