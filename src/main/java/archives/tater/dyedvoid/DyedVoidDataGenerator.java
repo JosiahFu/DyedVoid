@@ -3,10 +3,8 @@ package archives.tater.dyedvoid;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.*;
+import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -14,8 +12,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -24,6 +24,25 @@ import java.util.function.Consumer;
 import static java.util.Map.entry;
 
 public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
+	private static final List<Block> voidBlocks = List.of(
+			DyedVoidBlocks.BLACK_VOID,
+			DyedVoidBlocks.WHITE_VOID,
+			DyedVoidBlocks.LIGHT_GRAY_VOID,
+			DyedVoidBlocks.GRAY_VOID,
+			DyedVoidBlocks.BROWN_VOID,
+			DyedVoidBlocks.RED_VOID,
+			DyedVoidBlocks.ORANGE_VOID,
+			DyedVoidBlocks.YELLOW_VOID,
+			DyedVoidBlocks.LIME_VOID,
+			DyedVoidBlocks.GREEN_VOID,
+			DyedVoidBlocks.CYAN_VOID,
+			DyedVoidBlocks.LIGHT_BLUE_VOID,
+			DyedVoidBlocks.BLUE_VOID,
+			DyedVoidBlocks.PURPLE_VOID,
+			DyedVoidBlocks.MAGENTA_VOID,
+			DyedVoidBlocks.PINK_VOID
+	);
+
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
@@ -32,6 +51,8 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(RecipeGenerator::new);
 		pack.addProvider(LangGenerator::new);
 		pack.addProvider(ItemTagGenerator::new);
+		pack.addProvider(BlockTagGenerator::new);
+		pack.addProvider(BlockLootTableGenerator::new);
 	}
 
 	public static class ModelGenerator extends FabricModelProvider {
@@ -45,22 +66,9 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 
 		@Override
 		public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.WHITE_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.BLACK_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.LIGHT_GRAY_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.GRAY_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.BROWN_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.RED_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.ORANGE_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.YELLOW_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.LIME_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.GREEN_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.CYAN_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.LIGHT_BLUE_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.BLUE_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.PURPLE_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.MAGENTA_VOID, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.PINK_VOID, VOID_BLOCK_FACTORY);
+			for (Block block : voidBlocks) {
+				blockStateModelGenerator.registerSingleton(block, VOID_BLOCK_FACTORY);
+			}
 		}
 
 		@Override
@@ -179,6 +187,36 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 					DyedVoidItems.MAGENTA_VOID,
 					DyedVoidItems.PINK_VOID
 			);
+		}
+	}
+
+	public static class BlockTagGenerator extends FabricTagProvider.BlockTagProvider {
+
+		public BlockTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+			super(output, registriesFuture);
+		}
+
+		@Override
+		protected void configure(RegistryWrapper.WrapperLookup arg) {
+			getOrCreateTagBuilder(DyedVoidBlocks.VOID_BLOCKS_TAG).add(voidBlocks.toArray(new Block[0]));
+
+			getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
+			getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
+			getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
+			getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
+			getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
+		}
+	}
+
+	public static class BlockLootTableGenerator extends FabricBlockLootTableProvider {
+
+		protected BlockLootTableGenerator(FabricDataOutput dataOutput) {
+			super(dataOutput);
+		}
+
+		@Override
+		public void generate() {
+            voidBlocks.forEach(this::addDrop);
 		}
 	}
 }

@@ -4,6 +4,8 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 public class DyedVoidBlocks {
@@ -14,6 +16,8 @@ public class DyedVoidBlocks {
 
     private static Block registerVoidBlock(String colorName, boolean luminant) {
         FabricBlockSettings settings = FabricBlockSettings.create()
+                .strength(0)
+                .hardness(2)
                 .emissiveLighting((state, world, pos) -> true)
                 .sounds(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
                 .luminance(luminant ? 15 : 0);
@@ -41,6 +45,8 @@ public class DyedVoidBlocks {
     public static final Block PURPLE_VOID = registerVoidBlock("purple");
     public static final Block MAGENTA_VOID = registerVoidBlock("magenta");
     public static final Block PINK_VOID = registerVoidBlock("pink");
+
+    public static final TagKey<Block> VOID_BLOCKS_TAG = TagKey.of(RegistryKeys.BLOCK, new Identifier(DyedVoid.MOD_ID, "void_blocks"));
 
     public static void initialize() {}
 }
