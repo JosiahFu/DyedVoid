@@ -42,7 +42,7 @@ public class DyedVoidItems {
     public static final Item MAGENTA_VOID = registerBlockItem(DyedVoidBlocks.MAGENTA_VOID);
     public static final Item PINK_VOID = registerBlockItem(DyedVoidBlocks.PINK_VOID);
 
-    public static final Item VOID_BOTTLE_ITEM = register("void_bottle", new Item(new FabricItemSettings()
+    public static final Item VOID_BOTTLE_ITEM = register("void_bottle", new VoidBottleItem(new FabricItemSettings()
             .maxCount(16)
             .recipeRemainder(Items.GLASS_BOTTLE)
     ));

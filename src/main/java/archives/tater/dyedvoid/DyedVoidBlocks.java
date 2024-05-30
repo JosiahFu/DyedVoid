@@ -17,7 +17,7 @@ public class DyedVoidBlocks {
     private static Block registerVoidBlock(String colorName, boolean luminant) {
         FabricBlockSettings settings = FabricBlockSettings.create()
                 .strength(0)
-                .hardness(2)
+                .hardness(3)
                 .emissiveLighting((state, world, pos) -> true)
                 .sounds(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
                 .luminance(luminant ? 15 : 0);
