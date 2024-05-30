@@ -3,23 +3,20 @@
 	"id": "dyedvoid",
 	"version": "${version}",
 	"name": "DyedVoid",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Craft blocks of pure color from the void itself",
 	"authors": [
-		"Me!"
+		"ThePotatoArchivist"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/the-dyed-void",
+		"sources": "https://github.com/JosiahFu/DyedVoid"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/dyedvoid/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			"archives.tater.dyedvoid.DyedVoid"
-		],
-		"client": [
-			"archives.tater.dyedvoid.DyedVoidClient"
 		],
 		"fabric-datagen": [
 			"archives.tater.dyedvoid.DyedVoidDataGenerator"

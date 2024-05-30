@@ -24,7 +24,6 @@ loom {
 	mods {
 		"dyedvoid" {
 			sourceSet sourceSets.main
-			sourceSet sourceSets.client
 		}
 	}
 
