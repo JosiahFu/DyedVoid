@@ -138,23 +138,23 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 
 		@Override
 		public void generateTranslations(TranslationBuilder translationBuilder) {
-			translationBuilder.add(DyedVoidItems.VOID_BOTTLE_ITEM, "Bottle of void");
-			translationBuilder.add(DyedVoidItems.BLACK_VOID, "Void");
-			translationBuilder.add(DyedVoidItems.WHITE_VOID, "Luminous Void");
-			translationBuilder.add(DyedVoidItems.LIGHT_GRAY_VOID, "Light Gray Void");
-			translationBuilder.add(DyedVoidItems.GRAY_VOID, "Gray Void");
-			translationBuilder.add(DyedVoidItems.BROWN_VOID, "Brown Void");
-			translationBuilder.add(DyedVoidItems.RED_VOID, "Red Void");
-			translationBuilder.add(DyedVoidItems.ORANGE_VOID, "Orange Void");
-			translationBuilder.add(DyedVoidItems.YELLOW_VOID, "Yellow Void");
-			translationBuilder.add(DyedVoidItems.LIME_VOID, "Lime Void");
-			translationBuilder.add(DyedVoidItems.GREEN_VOID, "Green Void");
-			translationBuilder.add(DyedVoidItems.CYAN_VOID, "Cyan Void");
-			translationBuilder.add(DyedVoidItems.LIGHT_BLUE_VOID, "Light Blue Void");
-			translationBuilder.add(DyedVoidItems.BLUE_VOID, "Blue Void");
-			translationBuilder.add(DyedVoidItems.PURPLE_VOID, "Purple Void");
-			translationBuilder.add(DyedVoidItems.MAGENTA_VOID, "Magenta Void");
-			translationBuilder.add(DyedVoidItems.PINK_VOID, "Pink Void");
+			translationBuilder.add(DyedVoidItems.VOID_BOTTLE_ITEM, "Bottle of Void");
+			translationBuilder.add(DyedVoidItems.BLACK_VOID, "Void Block");
+			translationBuilder.add(DyedVoidItems.WHITE_VOID, "Luminous Void Block");
+			translationBuilder.add(DyedVoidItems.LIGHT_GRAY_VOID, "Light Gray Void Block");
+			translationBuilder.add(DyedVoidItems.GRAY_VOID, "Gray Void Block");
+			translationBuilder.add(DyedVoidItems.BROWN_VOID, "Brown Void Block");
+			translationBuilder.add(DyedVoidItems.RED_VOID, "Red Void Block");
+			translationBuilder.add(DyedVoidItems.ORANGE_VOID, "Orange Void Block");
+			translationBuilder.add(DyedVoidItems.YELLOW_VOID, "Yellow Void Block");
+			translationBuilder.add(DyedVoidItems.LIME_VOID, "Lime Void Block");
+			translationBuilder.add(DyedVoidItems.GREEN_VOID, "Green Void Block");
+			translationBuilder.add(DyedVoidItems.CYAN_VOID, "Cyan Void Block");
+			translationBuilder.add(DyedVoidItems.LIGHT_BLUE_VOID, "Light Blue Void Block");
+			translationBuilder.add(DyedVoidItems.BLUE_VOID, "Blue Void Block");
+			translationBuilder.add(DyedVoidItems.PURPLE_VOID, "Purple Void Block");
+			translationBuilder.add(DyedVoidItems.MAGENTA_VOID, "Magenta Void Block");
+			translationBuilder.add(DyedVoidItems.PINK_VOID, "Pink Void Block");
 			translationBuilder.add("itemGroup.dyedvoid.group", "The Dyed Void");
 			translationBuilder.add("subtitles.dyedvoid.fill_void_bottle", "Bottle truly empties");
 		}
