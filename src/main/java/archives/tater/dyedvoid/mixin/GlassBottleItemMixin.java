@@ -1,6 +1,7 @@
 package archives.tater.dyedvoid.mixin;
 
-import archives.tater.dyedvoid.DyedVoid;
+import archives.tater.dyedvoid.DyedVoidItems;
+import archives.tater.dyedvoid.DyedVoidSounds;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.GlassBottleItem;
@@ -34,11 +35,11 @@ public class GlassBottleItemMixin extends Item {
                 if (!user.isCreative()) {
                     stack.decrement(1);
                 }
-                user.giveItemStack(new ItemStack(DyedVoid.VOID_BOTTLE_ITEM));
+                user.giveItemStack(new ItemStack(DyedVoidItems.VOID_BOTTLE_ITEM));
             } else {
-                user.setStackInHand(hand, new ItemStack(DyedVoid.VOID_BOTTLE_ITEM));
+                user.setStackInHand(hand, new ItemStack(DyedVoidItems.VOID_BOTTLE_ITEM));
             }
-            world.playSound(null, user.getX(), user.getY(), user.getZ(), DyedVoid.FILL_VOID_BOTTLE_SOUND_EVENT, SoundCategory.NEUTRAL, 1.0F, 1.0F);
+            world.playSound(null, user.getX(), user.getY(), user.getZ(), DyedVoidSounds.FILL_VOID_BOTTLE, SoundCategory.NEUTRAL, 1.0F, 1.0F);
             cir.setReturnValue(TypedActionResult.success(stack));
         }
     }

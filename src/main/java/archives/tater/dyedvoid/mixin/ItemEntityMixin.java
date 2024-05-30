@@ -1,6 +1,6 @@
 package archives.tater.dyedvoid.mixin;
 
-import archives.tater.dyedvoid.DyedVoid;
+import archives.tater.dyedvoid.DyedVoidItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -20,6 +20,6 @@ public abstract class ItemEntityMixin extends Entity {
 
 	@Override
 	public boolean hasNoGravity() {
-		return super.hasNoGravity() || getStack().isIn(DyedVoid.NO_GRAVITY_TAG);
+		return super.hasNoGravity() || getStack().isIn(DyedVoidItems.NO_GRAVITY_TAG);
 	}
 }

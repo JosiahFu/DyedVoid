@@ -6,16 +6,19 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.data.client.*;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 import static java.util.Map.entry;
@@ -28,6 +31,7 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModelGenerator::new);
 		pack.addProvider(RecipeGenerator::new);
 		pack.addProvider(LangGenerator::new);
+		pack.addProvider(ItemTagGenerator::new);
 	}
 
 	public static class ModelGenerator extends FabricModelProvider {
@@ -41,46 +45,46 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 
 		@Override
 		public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-			blockStateModelGenerator.registerSingleton(DyedVoid.WHITE_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.BLACK_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.LIGHT_GRAY_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.GRAY_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.BROWN_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.RED_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.ORANGE_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.YELLOW_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.LIME_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.GREEN_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.CYAN_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.LIGHT_BLUE_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.BLUE_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.PURPLE_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.MAGENTA_VOID_BLOCK, VOID_BLOCK_FACTORY);
-			blockStateModelGenerator.registerSingleton(DyedVoid.PINK_VOID_BLOCK, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.WHITE_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.BLACK_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.LIGHT_GRAY_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.GRAY_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.BROWN_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.RED_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.ORANGE_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.YELLOW_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.LIME_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.GREEN_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.CYAN_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.LIGHT_BLUE_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.BLUE_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.PURPLE_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.MAGENTA_VOID, VOID_BLOCK_FACTORY);
+			blockStateModelGenerator.registerSingleton(DyedVoidBlocks.PINK_VOID, VOID_BLOCK_FACTORY);
 		}
 
 		@Override
 		public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-			itemModelGenerator.register(DyedVoid.VOID_BOTTLE_ITEM, Models.GENERATED);
+			itemModelGenerator.register(DyedVoidItems.VOID_BOTTLE_ITEM, Models.GENERATED);
 		}
 	}
 
 	public static class RecipeGenerator extends FabricRecipeProvider {
 		Map<Item, Item> dyes = Map.ofEntries(
-				entry(DyedVoid.ORANGE_VOID_ITEM, Items.ORANGE_DYE),
-				entry(DyedVoid.MAGENTA_VOID_ITEM, Items.MAGENTA_DYE),
-				entry(DyedVoid.LIGHT_BLUE_VOID_ITEM, Items.LIGHT_BLUE_DYE),
-				entry(DyedVoid.YELLOW_VOID_ITEM, Items.YELLOW_DYE),
-				entry(DyedVoid.LIME_VOID_ITEM, Items.LIME_DYE),
-				entry(DyedVoid.PINK_VOID_ITEM, Items.PINK_DYE),
-				entry(DyedVoid.GRAY_VOID_ITEM, Items.GRAY_DYE),
-				entry(DyedVoid.LIGHT_GRAY_VOID_ITEM, Items.LIGHT_GRAY_DYE),
-				entry(DyedVoid.CYAN_VOID_ITEM, Items.CYAN_DYE),
-				entry(DyedVoid.PURPLE_VOID_ITEM, Items.PURPLE_DYE),
-				entry(DyedVoid.BLUE_VOID_ITEM, Items.BLUE_DYE),
-				entry(DyedVoid.BROWN_VOID_ITEM, Items.BROWN_DYE),
-				entry(DyedVoid.GREEN_VOID_ITEM, Items.GREEN_DYE),
-				entry(DyedVoid.RED_VOID_ITEM, Items.RED_DYE)
+				entry(DyedVoidItems.ORANGE_VOID, Items.ORANGE_DYE),
+				entry(DyedVoidItems.MAGENTA_VOID, Items.MAGENTA_DYE),
+				entry(DyedVoidItems.LIGHT_BLUE_VOID, Items.LIGHT_BLUE_DYE),
+				entry(DyedVoidItems.YELLOW_VOID, Items.YELLOW_DYE),
+				entry(DyedVoidItems.LIME_VOID, Items.LIME_DYE),
+				entry(DyedVoidItems.PINK_VOID, Items.PINK_DYE),
+				entry(DyedVoidItems.GRAY_VOID, Items.GRAY_DYE),
+				entry(DyedVoidItems.LIGHT_GRAY_VOID, Items.LIGHT_GRAY_DYE),
+				entry(DyedVoidItems.CYAN_VOID, Items.CYAN_DYE),
+				entry(DyedVoidItems.PURPLE_VOID, Items.PURPLE_DYE),
+				entry(DyedVoidItems.BLUE_VOID, Items.BLUE_DYE),
+				entry(DyedVoidItems.BROWN_VOID, Items.BROWN_DYE),
+				entry(DyedVoidItems.GREEN_VOID, Items.GREEN_DYE),
+				entry(DyedVoidItems.RED_VOID, Items.RED_DYE)
 		);
 
 		public RecipeGenerator(FabricDataOutput output) {
@@ -93,27 +97,27 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
                     .pattern("###")
                     .pattern("#%#")
                     .pattern("###")
-                    .input('#', DyedVoid.WHITE_VOID_ITEM)
+                    .input('#', DyedVoidItems.WHITE_VOID)
                     .input('%', dyeItem)
-                    .criterion(hasItem(DyedVoid.WHITE_VOID_ITEM), conditionsFromItem(DyedVoid.WHITE_VOID_ITEM))
+                    .criterion(hasItem(DyedVoidItems.WHITE_VOID), conditionsFromItem(DyedVoidItems.WHITE_VOID))
                     .group("dye_void_block")
                     .offerTo(exporter)
 			);
 
-			ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, DyedVoid.BLACK_VOID_BLOCK, 4)
+			ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, DyedVoidBlocks.BLACK_VOID, 4)
 					.pattern("##")
 					.pattern("##")
-					.input('#', DyedVoid.VOID_BOTTLE_ITEM)
-					.criterion(hasItem(DyedVoid.VOID_BOTTLE_ITEM), conditionsFromItem(DyedVoid.VOID_BOTTLE_ITEM))
+					.input('#', DyedVoidItems.VOID_BOTTLE_ITEM)
+					.criterion(hasItem(DyedVoidItems.VOID_BOTTLE_ITEM), conditionsFromItem(DyedVoidItems.VOID_BOTTLE_ITEM))
 					.offerTo(exporter);
 
-			ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, DyedVoid.WHITE_VOID_ITEM, 8)
+			ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, DyedVoidItems.WHITE_VOID, 8)
 					.pattern("###")
 					.pattern("#%#")
 					.pattern("###")
-					.input('#', DyedVoid.BLACK_VOID_ITEM)
+					.input('#', DyedVoidItems.BLACK_VOID)
 					.input('%', Items.GLOW_INK_SAC)
-					.criterion(hasItem(DyedVoid.BLACK_VOID_ITEM), conditionsFromItem(DyedVoid.BLACK_VOID_ITEM))
+					.criterion(hasItem(DyedVoidItems.BLACK_VOID), conditionsFromItem(DyedVoidItems.BLACK_VOID))
 					.offerTo(exporter);
 		}
 	}
@@ -126,25 +130,55 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 
 		@Override
 		public void generateTranslations(TranslationBuilder translationBuilder) {
-			translationBuilder.add(DyedVoid.VOID_BOTTLE_ITEM, "Bottle of void");
-			translationBuilder.add(DyedVoid.BLACK_VOID_ITEM, "Void");
-			translationBuilder.add(DyedVoid.WHITE_VOID_ITEM, "Luminous Void");
-			translationBuilder.add(DyedVoid.LIGHT_GRAY_VOID_ITEM, "Light Gray Void");
-			translationBuilder.add(DyedVoid.GRAY_VOID_ITEM, "Gray Void");
-			translationBuilder.add(DyedVoid.BROWN_VOID_ITEM, "Brown Void");
-			translationBuilder.add(DyedVoid.RED_VOID_ITEM, "Red Void");
-			translationBuilder.add(DyedVoid.ORANGE_VOID_ITEM, "Orange Void");
-			translationBuilder.add(DyedVoid.YELLOW_VOID_ITEM, "Yellow Void");
-			translationBuilder.add(DyedVoid.LIME_VOID_ITEM, "Lime Void");
-			translationBuilder.add(DyedVoid.GREEN_VOID_ITEM, "Green Void");
-			translationBuilder.add(DyedVoid.CYAN_VOID_ITEM, "Cyan Void");
-			translationBuilder.add(DyedVoid.LIGHT_BLUE_VOID_ITEM, "Light Blue Void");
-			translationBuilder.add(DyedVoid.BLUE_VOID_ITEM, "Blue Void");
-			translationBuilder.add(DyedVoid.PURPLE_VOID_ITEM, "Purple Void");
-			translationBuilder.add(DyedVoid.MAGENTA_VOID_ITEM, "Magenta Void");
-			translationBuilder.add(DyedVoid.PINK_VOID_ITEM, "Pink Void");
+			translationBuilder.add(DyedVoidItems.VOID_BOTTLE_ITEM, "Bottle of void");
+			translationBuilder.add(DyedVoidItems.BLACK_VOID, "Void");
+			translationBuilder.add(DyedVoidItems.WHITE_VOID, "Luminous Void");
+			translationBuilder.add(DyedVoidItems.LIGHT_GRAY_VOID, "Light Gray Void");
+			translationBuilder.add(DyedVoidItems.GRAY_VOID, "Gray Void");
+			translationBuilder.add(DyedVoidItems.BROWN_VOID, "Brown Void");
+			translationBuilder.add(DyedVoidItems.RED_VOID, "Red Void");
+			translationBuilder.add(DyedVoidItems.ORANGE_VOID, "Orange Void");
+			translationBuilder.add(DyedVoidItems.YELLOW_VOID, "Yellow Void");
+			translationBuilder.add(DyedVoidItems.LIME_VOID, "Lime Void");
+			translationBuilder.add(DyedVoidItems.GREEN_VOID, "Green Void");
+			translationBuilder.add(DyedVoidItems.CYAN_VOID, "Cyan Void");
+			translationBuilder.add(DyedVoidItems.LIGHT_BLUE_VOID, "Light Blue Void");
+			translationBuilder.add(DyedVoidItems.BLUE_VOID, "Blue Void");
+			translationBuilder.add(DyedVoidItems.PURPLE_VOID, "Purple Void");
+			translationBuilder.add(DyedVoidItems.MAGENTA_VOID, "Magenta Void");
+			translationBuilder.add(DyedVoidItems.PINK_VOID, "Pink Void");
 			translationBuilder.add("itemGroup.dyedvoid.group", "The Dyed Void");
 			translationBuilder.add("subtitles.dyedvoid.fill_void_bottle", "Bottle truly empties");
+		}
+	}
+
+	public static class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
+
+		public ItemTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+			super(output, registriesFuture);
+		}
+
+		@Override
+		protected void configure(RegistryWrapper.WrapperLookup arg) {
+			getOrCreateTagBuilder(DyedVoidItems.NO_GRAVITY_TAG).add(
+					DyedVoidItems.VOID_BOTTLE_ITEM,
+					DyedVoidItems.BLACK_VOID,
+					DyedVoidItems.WHITE_VOID,
+					DyedVoidItems.LIGHT_GRAY_VOID,
+					DyedVoidItems.GRAY_VOID,
+					DyedVoidItems.BROWN_VOID,
+					DyedVoidItems.RED_VOID,
+					DyedVoidItems.ORANGE_VOID,
+					DyedVoidItems.YELLOW_VOID,
+					DyedVoidItems.LIME_VOID,
+					DyedVoidItems.GREEN_VOID,
+					DyedVoidItems.CYAN_VOID,
+					DyedVoidItems.LIGHT_BLUE_VOID,
+					DyedVoidItems.BLUE_VOID,
+					DyedVoidItems.PURPLE_VOID,
+					DyedVoidItems.MAGENTA_VOID,
+					DyedVoidItems.PINK_VOID
+			);
 		}
 	}
 }
