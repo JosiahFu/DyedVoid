@@ -16,6 +16,22 @@
     "dyedvoid:blue_void",
     "dyedvoid:purple_void",
     "dyedvoid:magenta_void",
-    "dyedvoid:pink_void"
+    "dyedvoid:pink_void",
+    "dyedvoid:black_void_face",
+    "dyedvoid:white_void_face",
+    "dyedvoid:light_gray_void_face",
+    "dyedvoid:gray_void_face",
+    "dyedvoid:brown_void_face",
+    "dyedvoid:red_void_face",
+    "dyedvoid:orange_void_face",
+    "dyedvoid:yellow_void_face",
+    "dyedvoid:lime_void_face",
+    "dyedvoid:green_void_face",
+    "dyedvoid:cyan_void_face",
+    "dyedvoid:light_blue_void_face",
+    "dyedvoid:blue_void_face",
+    "dyedvoid:purple_void_face",
+    "dyedvoid:magenta_void_face",
+    "dyedvoid:pink_void_face"
   ]
 }

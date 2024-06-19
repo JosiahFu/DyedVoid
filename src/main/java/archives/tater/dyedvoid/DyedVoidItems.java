@@ -1,5 +1,6 @@
 package archives.tater.dyedvoid;
 
+import archives.tater.dyedvoid.block.DyedVoidBlocks;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.block.Block;
@@ -42,6 +43,23 @@ public class DyedVoidItems {
     public static final Item MAGENTA_VOID = registerBlockItem(DyedVoidBlocks.MAGENTA_VOID);
     public static final Item PINK_VOID = registerBlockItem(DyedVoidBlocks.PINK_VOID);
 
+    public static final Item WHITE_VOID_FACE = registerBlockItem(DyedVoidBlocks.WHITE_VOID_FACE);
+    public static final Item LIGHT_GRAY_VOID_FACE = registerBlockItem(DyedVoidBlocks.LIGHT_GRAY_VOID_FACE);
+    public static final Item GRAY_VOID_FACE = registerBlockItem(DyedVoidBlocks.GRAY_VOID_FACE);
+    public static final Item BLACK_VOID_FACE = registerBlockItem(DyedVoidBlocks.BLACK_VOID_FACE);
+    public static final Item BROWN_VOID_FACE = registerBlockItem(DyedVoidBlocks.BROWN_VOID_FACE);
+    public static final Item RED_VOID_FACE = registerBlockItem(DyedVoidBlocks.RED_VOID_FACE);
+    public static final Item ORANGE_VOID_FACE = registerBlockItem(DyedVoidBlocks.ORANGE_VOID_FACE);
+    public static final Item YELLOW_VOID_FACE = registerBlockItem(DyedVoidBlocks.YELLOW_VOID_FACE);
+    public static final Item LIME_VOID_FACE = registerBlockItem(DyedVoidBlocks.LIME_VOID_FACE);
+    public static final Item GREEN_VOID_FACE = registerBlockItem(DyedVoidBlocks.GREEN_VOID_FACE);
+    public static final Item CYAN_VOID_FACE = registerBlockItem(DyedVoidBlocks.CYAN_VOID_FACE);
+    public static final Item LIGHT_BLUE_VOID_FACE = registerBlockItem(DyedVoidBlocks.LIGHT_BLUE_VOID_FACE);
+    public static final Item BLUE_VOID_FACE = registerBlockItem(DyedVoidBlocks.BLUE_VOID_FACE);
+    public static final Item PURPLE_VOID_FACE = registerBlockItem(DyedVoidBlocks.PURPLE_VOID_FACE);
+    public static final Item MAGENTA_VOID_FACE = registerBlockItem(DyedVoidBlocks.MAGENTA_VOID_FACE);
+    public static final Item PINK_VOID_FACE = registerBlockItem(DyedVoidBlocks.PINK_VOID_FACE);
+
     public static final Item VOID_BOTTLE_ITEM = register("void_bottle", new VoidBottleItem(new FabricItemSettings()
             .maxCount(16)
             .recipeRemainder(Items.GLASS_BOTTLE)
@@ -52,8 +70,9 @@ public class DyedVoidItems {
             .displayName(Text.translatable("itemGroup.dyedvoid.group"))
             .entries((context, entries) -> {
                 entries.add(VOID_BOTTLE_ITEM);
-                entries.add(LIGHT_GRAY_VOID);
+
                 entries.add(WHITE_VOID);
+                entries.add(LIGHT_GRAY_VOID);
                 entries.add(GRAY_VOID);
                 entries.add(BLACK_VOID);
                 entries.add(BROWN_VOID);
@@ -68,6 +87,23 @@ public class DyedVoidItems {
                 entries.add(PURPLE_VOID);
                 entries.add(MAGENTA_VOID);
                 entries.add(PINK_VOID);
+
+                entries.add(WHITE_VOID_FACE);
+                entries.add(LIGHT_GRAY_VOID_FACE);
+                entries.add(GRAY_VOID_FACE);
+                entries.add(BLACK_VOID_FACE);
+                entries.add(BROWN_VOID_FACE);
+                entries.add(RED_VOID_FACE);
+                entries.add(ORANGE_VOID_FACE);
+                entries.add(YELLOW_VOID_FACE);
+                entries.add(LIME_VOID_FACE);
+                entries.add(GREEN_VOID_FACE);
+                entries.add(CYAN_VOID_FACE);
+                entries.add(LIGHT_BLUE_VOID_FACE);
+                entries.add(BLUE_VOID_FACE);
+                entries.add(PURPLE_VOID_FACE);
+                entries.add(MAGENTA_VOID_FACE);
+                entries.add(PINK_VOID_FACE);
             })
             .build();
 

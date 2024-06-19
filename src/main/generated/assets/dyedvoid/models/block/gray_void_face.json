@@ -1,0 +1,6 @@
+{
+  "parent": "dyedvoid:block/void_face",
+  "textures": {
+    "all": "dyedvoid:block/gray_void_face"
+  }
+}
