@@ -1,6 +1,6 @@
 {
   "parent": "dyedvoid:block/void_block",
   "textures": {
-    "all": "dyedvoid:block/black_void"
+    "all": "dyedvoid:block/void"
   }
 }

@@ -7,6 +7,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.Nullable;
 
 public class DyedVoidBlocks {
 
@@ -14,7 +15,7 @@ public class DyedVoidBlocks {
         return Registry.register(Registries.BLOCK, new Identifier(DyedVoid.MOD_ID, name), block);
     }
 
-    private static Block registerVoidBlock(String colorName, boolean luminant) {
+    private static Block registerVoidBlock(@Nullable String colorName, boolean luminant) {
         FabricBlockSettings settings = FabricBlockSettings.create()
                 .strength(0)
                 .hardness(3)
@@ -22,7 +23,7 @@ public class DyedVoidBlocks {
                 .sounds(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
                 .luminance(luminant ? 15 : 0);
 
-        return register(colorName + "_void", new Block(settings));
+        return register(colorName == null ? "void" : colorName + "_void", new Block(settings));
     }
 
     private static Block registerVoidBlock(String colorName) {
@@ -32,7 +33,7 @@ public class DyedVoidBlocks {
     public static final Block WHITE_VOID = registerVoidBlock("white");
     public static final Block LIGHT_GRAY_VOID = registerVoidBlock("light_gray");
     public static final Block GRAY_VOID = registerVoidBlock("gray");
-    public static final Block BLACK_VOID = registerVoidBlock("black", false);
+    public static final Block BLACK_VOID = registerVoidBlock(null, false);
     public static final Block BROWN_VOID = registerVoidBlock("brown");
     public static final Block RED_VOID = registerVoidBlock("red");
     public static final Block ORANGE_VOID = registerVoidBlock("orange");

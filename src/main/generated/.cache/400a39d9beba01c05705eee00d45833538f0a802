@@ -1,7 +1,7 @@
-// 1.20.1	2024-05-30T13:30:18.320428031	DyedVoid/Tags for minecraft:block
+// 1.20.1	2024-07-24T23:16:46.410153695	DyedVoid/Tags for minecraft:block
 742e38bcbcfd82a6ccc025e1347f2e885fe8af60 data/minecraft/tags/blocks/mineable/shovel.json
-e6dbc312e5cdb2b946cc2d628ba02baddeafb48d data/dyedvoid/tags/blocks/void_blocks.json
 742e38bcbcfd82a6ccc025e1347f2e885fe8af60 data/minecraft/tags/blocks/mineable/hoe.json
+50c88e30a0cc80f51011361a181bf618a1512e22 data/dyedvoid/tags/blocks/void_blocks.json
 742e38bcbcfd82a6ccc025e1347f2e885fe8af60 data/minecraft/tags/blocks/mineable/axe.json
 742e38bcbcfd82a6ccc025e1347f2e885fe8af60 data/minecraft/tags/blocks/mineable/pickaxe.json
 742e38bcbcfd82a6ccc025e1347f2e885fe8af60 data/minecraft/tags/blocks/needs_iron_tool.json

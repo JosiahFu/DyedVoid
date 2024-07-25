@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "dyedvoid:black_void"
+          "name": "dyedvoid:void"
         }
       ],
       "rolls": 1.0
