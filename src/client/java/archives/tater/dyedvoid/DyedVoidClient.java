@@ -1,13 +1,18 @@
 package archives.tater.dyedvoid;
 
+import archives.tater.dyedvoid.client.render.EndVoidBlockEntityRenderer;
+import archives.tater.dyedvoid.client.render.VoidBlockItemRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry.DynamicItemRenderer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.item.Item;
 
 public class DyedVoidClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        BlockEntityRendererFactories.register(DyedVoidBlocks.END_VOID_BLOCK_ENTITY, EndVoidBlockEntityRenderer::new);
+
         DynamicItemRenderer voidBlockItemRenderer = VoidBlockItemRenderer::renderVoidBlockItem;
 
         for (var item : new Item[] {
@@ -26,9 +31,11 @@ public class DyedVoidClient implements ClientModInitializer {
                 DyedVoidItems.BLUE_VOID,
                 DyedVoidItems.PURPLE_VOID,
                 DyedVoidItems.MAGENTA_VOID,
-                DyedVoidItems.PINK_VOID,
+                DyedVoidItems.PINK_VOID
         }) {
             BuiltinItemRendererRegistry.INSTANCE.register(item, voidBlockItemRenderer);
         }
+
+        BuiltinItemRendererRegistry.INSTANCE.register(DyedVoidItems.END_VOID, VoidBlockItemRenderer::renderEndVoidBlockItem);
     }
 }

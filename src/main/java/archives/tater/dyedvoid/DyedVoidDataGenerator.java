@@ -24,6 +24,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 import static java.util.Map.entry;
+import static net.minecraft.util.Util.createTranslationKey;
 
 public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 	private static final List<Block> voidBlocks = List.of(
@@ -61,7 +62,8 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 			DyedVoidItems.BLUE_VOID,
 			DyedVoidItems.PURPLE_VOID,
 			DyedVoidItems.MAGENTA_VOID,
-			DyedVoidItems.PINK_VOID
+			DyedVoidItems.PINK_VOID,
+			DyedVoidItems.END_VOID
 	);
 
 	@Override
@@ -91,6 +93,7 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 			for (Block block : voidBlocks) {
 				blockStateModelGenerator.registerSingleton(block, VOID_BLOCK_FACTORY);
 			}
+			blockStateModelGenerator.registerBuiltinWithParticle(DyedVoidBlocks.END_VOID, new Identifier(DyedVoid.MOD_ID, "empty"));
 		}
 
 		@Override
@@ -180,8 +183,9 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 			translationBuilder.add(DyedVoidItems.PURPLE_VOID, "Purple Void Block");
 			translationBuilder.add(DyedVoidItems.MAGENTA_VOID, "Magenta Void Block");
 			translationBuilder.add(DyedVoidItems.PINK_VOID, "Pink Void Block");
+			translationBuilder.add(DyedVoidItems.END_VOID, "End Void Block");
 			translationBuilder.add("itemGroup.dyedvoid.group", "The Dyed Void");
-			translationBuilder.add("subtitles.dyedvoid.fill_void_bottle", "Bottle truly empties");
+			translationBuilder.add(createTranslationKey("subtitles", DyedVoidSounds.FILL_VOID_BOTTLE.getId()), "Bottle truly empties");
 		}
 	}
 
