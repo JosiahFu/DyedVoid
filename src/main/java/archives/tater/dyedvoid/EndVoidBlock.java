@@ -6,9 +6,13 @@ import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.EndPortalBlockEntity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
+
 
 public class EndVoidBlock extends Block implements BlockEntityProvider {
     public EndVoidBlock(Settings settings) {
@@ -36,5 +40,12 @@ public class EndVoidBlock extends Block implements BlockEntityProvider {
             if (world == null) return true;
             return Block.shouldDrawSide(this.getCachedState(), world, this.getPos(), direction, this.getPos().offset(direction));
         }
+    }
+
+    public static void tryCraft(Entity entity) {
+        if (!(entity instanceof ItemEntity itemEntity)) return;
+        var stack = itemEntity.getStack();
+        if (!stack.isOf(DyedVoidItems.BLACK_VOID)) return;
+        itemEntity.setStack(new ItemStack(DyedVoidItems.END_VOID, stack.getCount()));
     }
 }

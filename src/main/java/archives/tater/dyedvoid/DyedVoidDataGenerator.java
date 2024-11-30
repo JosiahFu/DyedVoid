@@ -17,7 +17,7 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
-import java.util.List;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -27,7 +27,7 @@ import static java.util.Map.entry;
 import static net.minecraft.util.Util.createTranslationKey;
 
 public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
-	private static final List<Block> voidBlocks = List.of(
+	private static final Block[] voidBlocks = {
 			DyedVoidBlocks.BLACK_VOID,
 			DyedVoidBlocks.WHITE_VOID,
 			DyedVoidBlocks.LIGHT_GRAY_VOID,
@@ -43,10 +43,11 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 			DyedVoidBlocks.BLUE_VOID,
 			DyedVoidBlocks.PURPLE_VOID,
 			DyedVoidBlocks.MAGENTA_VOID,
-			DyedVoidBlocks.PINK_VOID
-	);
+			DyedVoidBlocks.PINK_VOID,
+			DyedVoidBlocks.END_VOID
+	};
 
-	private static final List<Item> voidBlockItems = List.of(
+	private static final Item[] voidBlockItems = {
 			DyedVoidItems.BLACK_VOID,
 			DyedVoidItems.WHITE_VOID,
 			DyedVoidItems.LIGHT_GRAY_VOID,
@@ -64,7 +65,7 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 			DyedVoidItems.MAGENTA_VOID,
 			DyedVoidItems.PINK_VOID,
 			DyedVoidItems.END_VOID
-	);
+	};
 
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
@@ -91,6 +92,7 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 		@Override
 		public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
 			for (Block block : voidBlocks) {
+				if (block == DyedVoidBlocks.END_VOID) continue; // Skip
 				blockStateModelGenerator.registerSingleton(block, VOID_BLOCK_FACTORY);
 			}
 			blockStateModelGenerator.registerBuiltinWithParticle(DyedVoidBlocks.END_VOID, new Identifier(DyedVoid.MOD_ID, "empty"));
@@ -198,24 +200,8 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 		@Override
 		protected void configure(RegistryWrapper.WrapperLookup arg) {
 			getOrCreateTagBuilder(DyedVoidItems.NO_GRAVITY_TAG).add(
-					DyedVoidItems.VOID_BOTTLE_ITEM,
-					DyedVoidItems.BLACK_VOID,
-					DyedVoidItems.WHITE_VOID,
-					DyedVoidItems.LIGHT_GRAY_VOID,
-					DyedVoidItems.GRAY_VOID,
-					DyedVoidItems.BROWN_VOID,
-					DyedVoidItems.RED_VOID,
-					DyedVoidItems.ORANGE_VOID,
-					DyedVoidItems.YELLOW_VOID,
-					DyedVoidItems.LIME_VOID,
-					DyedVoidItems.GREEN_VOID,
-					DyedVoidItems.CYAN_VOID,
-					DyedVoidItems.LIGHT_BLUE_VOID,
-					DyedVoidItems.BLUE_VOID,
-					DyedVoidItems.PURPLE_VOID,
-					DyedVoidItems.MAGENTA_VOID,
-					DyedVoidItems.PINK_VOID
-			);
+					DyedVoidItems.VOID_BOTTLE_ITEM
+			).add(voidBlockItems);
 
 			getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, new Identifier("create", "upright_on_belt")))
 					.add(DyedVoidItems.VOID_BOTTLE_ITEM);
@@ -230,7 +216,7 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 
 		@Override
 		protected void configure(RegistryWrapper.WrapperLookup arg) {
-			getOrCreateTagBuilder(DyedVoidBlocks.VOID_BLOCKS_TAG).add(voidBlocks.toArray(new Block[0]));
+			getOrCreateTagBuilder(DyedVoidBlocks.VOID_BLOCKS_TAG).add(voidBlocks);
 
 			getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
 			getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
@@ -248,7 +234,7 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 
 		@Override
 		public void generate() {
-            voidBlocks.forEach(this::addDrop);
+            Arrays.stream(voidBlocks).forEach(this::addDrop);
 		}
 	}
 }
