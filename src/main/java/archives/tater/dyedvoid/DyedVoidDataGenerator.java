@@ -43,6 +43,25 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 			DyedVoidBlocks.PINK_VOID
 	);
 
+	private static final List<Item> voidBlockItems = List.of(
+			DyedVoidItems.BLACK_VOID,
+			DyedVoidItems.WHITE_VOID,
+			DyedVoidItems.LIGHT_GRAY_VOID,
+			DyedVoidItems.GRAY_VOID,
+			DyedVoidItems.BROWN_VOID,
+			DyedVoidItems.RED_VOID,
+			DyedVoidItems.ORANGE_VOID,
+			DyedVoidItems.YELLOW_VOID,
+			DyedVoidItems.LIME_VOID,
+			DyedVoidItems.GREEN_VOID,
+			DyedVoidItems.CYAN_VOID,
+			DyedVoidItems.LIGHT_BLUE_VOID,
+			DyedVoidItems.BLUE_VOID,
+			DyedVoidItems.PURPLE_VOID,
+			DyedVoidItems.MAGENTA_VOID,
+			DyedVoidItems.PINK_VOID
+	);
+
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
@@ -62,6 +81,7 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 		}
 
 		private static final Model VOID_BLOCK_MODEL = new Model(Optional.of(new Identifier(DyedVoid.MOD_ID, "block/void_block")), Optional.empty(), TextureKey.ALL);
+		private static final Model VOID_ITEM_MODEL = new Model(Optional.of(new Identifier(DyedVoid.MOD_ID, "item/void_block")), Optional.empty());
 		private static final TexturedModel.Factory VOID_BLOCK_FACTORY = TexturedModel.makeFactory(TextureMap::all, VOID_BLOCK_MODEL);
 
 		@Override
@@ -73,6 +93,9 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 
 		@Override
 		public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+			for (Item item : voidBlockItems) {
+				itemModelGenerator.register(item, VOID_ITEM_MODEL);
+			}
 			itemModelGenerator.register(DyedVoidItems.VOID_BOTTLE_ITEM, Models.GENERATED);
 		}
 	}

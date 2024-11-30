@@ -3,7 +3,7 @@
   "ambientocclusion": false,
   "gui_light": "front",
   "textures": {
-    "particle": "#all"
+    "particle": "dyedvoid:block/empty"
   },
   "elements": [
     {

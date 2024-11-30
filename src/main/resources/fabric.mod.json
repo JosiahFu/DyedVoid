@@ -18,6 +18,9 @@
 		"main": [
 			"archives.tater.dyedvoid.DyedVoid"
 		],
+		"client": [
+			"archives.tater.dyedvoid.DyedVoidClient"
+		],
 		"fabric-datagen": [
 			"archives.tater.dyedvoid.DyedVoidDataGenerator"
 		]
