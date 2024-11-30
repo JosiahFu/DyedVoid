@@ -11,8 +11,10 @@ import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
@@ -210,6 +212,9 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 					DyedVoidItems.MAGENTA_VOID,
 					DyedVoidItems.PINK_VOID
 			);
+
+			getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, new Identifier("create", "upright_on_belt")))
+					.add(DyedVoidItems.VOID_BOTTLE_ITEM);
 		}
 	}
 
