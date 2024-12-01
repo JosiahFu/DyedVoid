@@ -56,12 +56,31 @@ public class DyedVoidBlocks {
             .sounds(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
             .noBlockBreakParticles()
     ));
-
     public static final BlockEntityType<EndVoidBlock.EndVoidBlockEntity> END_VOID_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
             new Identifier(DyedVoid.MOD_ID, "end_void"),
             FabricBlockEntityTypeBuilder.create(EndVoidBlock.EndVoidBlockEntity::new, END_VOID).build()
     );
+
+    public static final Block[] VOID_BLOCKS = {
+            BLACK_VOID,
+            WHITE_VOID,
+            LIGHT_GRAY_VOID,
+            GRAY_VOID,
+            BROWN_VOID,
+            RED_VOID,
+            ORANGE_VOID,
+            YELLOW_VOID,
+            LIME_VOID,
+            GREEN_VOID,
+            CYAN_VOID,
+            LIGHT_BLUE_VOID,
+            BLUE_VOID,
+            PURPLE_VOID,
+            MAGENTA_VOID,
+            PINK_VOID,
+            END_VOID
+    };
 
     public static final TagKey<Block> VOID_BLOCKS_TAG = TagKey.of(RegistryKeys.BLOCK, new Identifier(DyedVoid.MOD_ID, "void_blocks"));
 

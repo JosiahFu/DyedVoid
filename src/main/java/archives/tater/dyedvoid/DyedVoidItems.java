@@ -49,6 +49,26 @@ public class DyedVoidItems {
 
     public static final Item END_VOID = registerBlockItem(DyedVoidBlocks.END_VOID);
 
+    public static final Item[] VOID_BLOCKS = {
+            BLACK_VOID,
+            WHITE_VOID,
+            LIGHT_GRAY_VOID,
+            GRAY_VOID,
+            BROWN_VOID,
+            RED_VOID,
+            ORANGE_VOID,
+            YELLOW_VOID,
+            LIME_VOID,
+            GREEN_VOID,
+            CYAN_VOID,
+            LIGHT_BLUE_VOID,
+            BLUE_VOID,
+            PURPLE_VOID,
+            MAGENTA_VOID,
+            PINK_VOID,
+            END_VOID
+    };
+
     public static final Item VOID_BOTTLE_ITEM = register("void_bottle", new VoidBottleItem(new FabricItemSettings()
             .maxCount(16)
             .recipeRemainder(Items.GLASS_BOTTLE)
