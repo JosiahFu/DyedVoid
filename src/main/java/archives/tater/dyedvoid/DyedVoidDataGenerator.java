@@ -101,8 +101,14 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 		@Override
 		public void generateItemModels(ItemModelGenerator itemModelGenerator) {
 			for (Item item : voidBlockItems) {
+				if (item == DyedVoidItems.END_VOID) continue; // Skip
 				itemModelGenerator.register(item, VOID_ITEM_MODEL);
 			}
+
+			Models.CUBE_ALL.upload(ModelIds.getItemModelId(DyedVoidItems.END_VOID), TextureMap.all(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
+			Models.GENERATED.upload(ModelIds.getItemModelId(DyedVoidItems.DUMMY_END_PORTAL), TextureMap.all(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
+			Models.CUBE_ALL.upload(ModelIds.getItemModelId(DyedVoidItems.DUMMY_END_GATEWAY), TextureMap.all(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
+
 			itemModelGenerator.register(DyedVoidItems.VOID_BOTTLE_ITEM, Models.GENERATED);
 		}
 	}

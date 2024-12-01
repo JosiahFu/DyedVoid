@@ -3,6 +3,7 @@ package archives.tater.dyedvoid;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -13,8 +14,12 @@ import net.minecraft.util.Identifier;
 
 public class DyedVoidItems {
 
-    private static Item register(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(DyedVoid.MOD_ID, name), item);
+    private static Item register(Identifier identifier, Item item) {
+        return Registry.register(Registries.ITEM, identifier, item);
+    }
+
+    private static Item register(String path, Item item) {
+        return register(new Identifier(DyedVoid.MOD_ID, path), item);
     }
 
     private static Item registerBlockItem(Block block, Item.Settings settings) {
@@ -73,6 +78,9 @@ public class DyedVoidItems {
                 entries.add(END_VOID);
             })
             .build();
+
+    public static final Item DUMMY_END_PORTAL = register(new Identifier("dyedvoid/dummy/end_portal"), new BlockItem(Blocks.END_PORTAL, new FabricItemSettings()));
+    public static final Item DUMMY_END_GATEWAY = register(new Identifier("dyedvoid/dummy/end_gateway"), new BlockItem(Blocks.END_GATEWAY, new FabricItemSettings()));
 
     public static final TagKey<Item> NO_GRAVITY_TAG = TagKey.of(RegistryKeys.ITEM, new Identifier(DyedVoid.MOD_ID, "no_gravity"));
 

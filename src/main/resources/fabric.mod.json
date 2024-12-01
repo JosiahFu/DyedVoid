@@ -23,10 +23,17 @@
 		],
 		"fabric-datagen": [
 			"archives.tater.dyedvoid.DyedVoidDataGenerator"
+		],
+		"emi": [
+			"archives.tater.dyedvoid.DyedVoidEmiPlugin"
 		]
 	},
 	"mixins": [
-		"dyedvoid.mixins.json"
+		"dyedvoid.mixins.json",
+		{
+			"config": "dyedvoid.client.mixins.json",
+			"environment": "client"
+		}
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",

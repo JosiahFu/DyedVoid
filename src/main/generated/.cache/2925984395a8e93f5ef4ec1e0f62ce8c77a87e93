@@ -1,4 +1,4 @@
-// 1.20.1	2024-11-30T15:37:53.989299234	DyedVoid/Model Definitions
+// 1.20.1	2024-11-30T16:04:18.688733251	DyedVoid/Model Definitions
 4f7e1de7195ba50a5c72d7a289f113e71a516276 assets/dyedvoid/models/block/light_gray_void.json
 10d1e8aa4a0b3257723c14cade73e13f9c84b703 assets/dyedvoid/models/item/purple_void.json
 e95e9eb72db8602216d29264eaa0f334b98abdde assets/dyedvoid/blockstates/gray_void.json
@@ -7,15 +7,15 @@ e50111fd9275e752080044536bc8044ffe1f5739 assets/dyedvoid/models/block/purple_voi
 4d51405f8904b3266d10a648e8301bd0774834ef assets/dyedvoid/blockstates/green_void.json
 65097f065550b25c78e5068f7bf819afc2d33b02 assets/dyedvoid/blockstates/purple_void.json
 10d1e8aa4a0b3257723c14cade73e13f9c84b703 assets/dyedvoid/models/item/magenta_void.json
-8cdc5a4ad8ce0180193b97b69e1ab5df5d903d20 assets/dyedvoid/blockstates/void.json
 b3fa98806efd2e37141ddf0f6cb0c98598fc4105 assets/dyedvoid/blockstates/cyan_void.json
+8cdc5a4ad8ce0180193b97b69e1ab5df5d903d20 assets/dyedvoid/blockstates/void.json
 e5646a506f2bd0bcda0bfb6c8e206265761845f2 assets/dyedvoid/blockstates/pink_void.json
 10d1e8aa4a0b3257723c14cade73e13f9c84b703 assets/dyedvoid/models/item/light_gray_void.json
 94015f3426360671c62d85328f43a4b625ab9d53 assets/dyedvoid/models/block/yellow_void.json
 10d1e8aa4a0b3257723c14cade73e13f9c84b703 assets/dyedvoid/models/item/brown_void.json
 7b3343655b1566e8432cb1fa2954a9725087985b assets/dyedvoid/models/block/magenta_void.json
 29bbfad2e7e24e3aba283020da19e45536e98cc0 assets/dyedvoid/models/block/brown_void.json
-10d1e8aa4a0b3257723c14cade73e13f9c84b703 assets/dyedvoid/models/item/end_void.json
+7b85ecf7ca40055cf1503e04e976949a0621699e assets/dyedvoid/models/item/end_void.json
 10d1e8aa4a0b3257723c14cade73e13f9c84b703 assets/dyedvoid/models/item/red_void.json
 10d1e8aa4a0b3257723c14cade73e13f9c84b703 assets/dyedvoid/models/item/light_blue_void.json
 10d1e8aa4a0b3257723c14cade73e13f9c84b703 assets/dyedvoid/models/item/white_void.json
@@ -48,6 +48,8 @@ ec0a9fe7b7b51ce6a3b1ea26c4fbcffbc69fda6a assets/dyedvoid/models/block/light_blue
 f3a539e7fa5f38bb616ca3f5c947805671d723e1 assets/dyedvoid/blockstates/brown_void.json
 dedfc6245de9c7b75d93230aaebc9352f07983ce assets/dyedvoid/models/block/cyan_void.json
 91d4a6a2c07f7db8d62de85af605c59fa369f726 assets/dyedvoid/blockstates/end_void.json
+7b85ecf7ca40055cf1503e04e976949a0621699e assets/minecraft/models/item/dyedvoid/dummy/end_gateway.json
 10d1e8aa4a0b3257723c14cade73e13f9c84b703 assets/dyedvoid/models/item/orange_void.json
 d8f7d6c3a4316d94548ee2e417f9eb195b3a456c assets/dyedvoid/models/block/lime_void.json
+6a82436444db47a0202bf520b032db68bde38e02 assets/minecraft/models/item/dyedvoid/dummy/end_portal.json
 10d1e8aa4a0b3257723c14cade73e13f9c84b703 assets/dyedvoid/models/item/yellow_void.json

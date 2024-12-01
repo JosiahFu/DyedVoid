@@ -35,7 +35,5 @@ public class DyedVoidClient implements ClientModInitializer {
         }) {
             BuiltinItemRendererRegistry.INSTANCE.register(item, voidBlockItemRenderer);
         }
-
-        BuiltinItemRendererRegistry.INSTANCE.register(DyedVoidItems.END_VOID, VoidBlockItemRenderer::renderEndVoidBlockItem);
     }
 }

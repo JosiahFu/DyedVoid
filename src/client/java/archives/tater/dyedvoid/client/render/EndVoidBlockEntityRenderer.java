@@ -1,7 +1,6 @@
 package archives.tater.dyedvoid.client.render;
 
 import archives.tater.dyedvoid.EndVoidBlock.EndVoidBlockEntity;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.block.entity.EndPortalBlockEntityRenderer;
 
@@ -18,11 +17,6 @@ public class EndVoidBlockEntityRenderer extends EndPortalBlockEntityRenderer<End
     @Override
     protected float getBottomYOffset() {
         return 0.0F;
-    }
-
-    @Override
-    protected RenderLayer getLayer() {
-        return RenderLayer.getEndGateway();
     }
 
     @Override

@@ -1,6 +1,5 @@
 package archives.tater.dyedvoid.client.render;
 
-import archives.tater.dyedvoid.DyedVoidBlocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -23,15 +22,5 @@ public class VoidBlockItemRenderer {
         }
         MinecraftClient.getInstance().getBlockRenderManager()
                 .renderBlock(blockItem.getBlock().getDefaultState(), BlockPos.ORIGIN, world, matrices, vertexConsumers.getBuffer(RenderLayer.getSolid()), false, world.random);
-    }
-
-    public static void renderEndVoidBlockItem(ItemStack itemStack, ModelTransformationMode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        var world = MinecraftClient.getInstance().world;
-        if (world == null) {
-            // Use missing model somehow
-            return;
-        }
-        MinecraftClient.getInstance().getBlockRenderManager()
-                .renderBlock(DyedVoidBlocks.BLACK_VOID.getDefaultState(), BlockPos.ORIGIN, world, matrices, vertexConsumers.getBuffer(RenderLayer.getEndGateway()), false, world.random);
     }
 }
