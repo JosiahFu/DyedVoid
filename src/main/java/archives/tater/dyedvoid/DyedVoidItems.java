@@ -79,8 +79,8 @@ public class DyedVoidItems {
             .displayName(Text.translatable("itemGroup.dyedvoid.group"))
             .entries((context, entries) -> {
                 entries.add(VOID_BOTTLE_ITEM);
-                entries.add(LIGHT_GRAY_VOID);
                 entries.add(WHITE_VOID);
+                entries.add(LIGHT_GRAY_VOID);
                 entries.add(GRAY_VOID);
                 entries.add(BLACK_VOID);
                 entries.add(BROWN_VOID);

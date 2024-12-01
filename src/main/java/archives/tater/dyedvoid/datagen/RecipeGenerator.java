@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
@@ -39,12 +40,10 @@ public class RecipeGenerator extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
-        dyes.forEach((voidItem, dyeItem) -> ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, voidItem, 8)
-                .pattern("###")
-                .pattern("#%#")
-                .pattern("###")
-                .input('#', DyedVoidItems.WHITE_VOID)
-                .input('%', dyeItem)
+        dyes.forEach((voidItem, dyeItem) -> ShapelessRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, voidItem, 8)
+                .input(DyedVoidItems.WHITE_VOID, 4)
+                .input(dyeItem)
+                .input(DyedVoidItems.WHITE_VOID, 4)
                 .criterion(hasItem(DyedVoidItems.WHITE_VOID), conditionsFromItem(DyedVoidItems.WHITE_VOID))
                 .group("dye_void_block")
                 .offerTo(exporter)
@@ -57,12 +56,10 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(DyedVoidItems.VOID_BOTTLE_ITEM), conditionsFromItem(DyedVoidItems.VOID_BOTTLE_ITEM))
                 .offerTo(exporter);
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, DyedVoidItems.WHITE_VOID, 8)
-                .pattern("###")
-                .pattern("#%#")
-                .pattern("###")
-                .input('#', DyedVoidItems.BLACK_VOID)
-                .input('%', Items.GLOW_INK_SAC)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, DyedVoidItems.WHITE_VOID, 8)
+                .input(DyedVoidItems.BLACK_VOID, 4)
+                .input(Items.GLOW_INK_SAC)
+                .input(DyedVoidItems.BLACK_VOID, 4)
                 .criterion(hasItem(DyedVoidItems.BLACK_VOID), conditionsFromItem(DyedVoidItems.BLACK_VOID))
                 .offerTo(exporter);
     }

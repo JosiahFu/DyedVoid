@@ -1,23 +1,38 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "group": "dye_void_block",
-  "key": {
-    "#": {
+  "ingredients": [
+    {
       "item": "dyedvoid:white_void"
     },
-    "%": {
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
       "item": "minecraft:purple_dye"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "dyedvoid:white_void"
     }
-  },
-  "pattern": [
-    "###",
-    "#%#",
-    "###"
   ],
   "result": {
     "count": 8,
     "item": "dyedvoid:purple_void"
-  },
-  "show_notification": true
+  }
 }

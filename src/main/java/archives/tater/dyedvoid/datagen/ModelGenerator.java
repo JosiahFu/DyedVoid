@@ -39,7 +39,7 @@ public class ModelGenerator extends FabricModelProvider {
         }
 
         Models.CUBE_ALL.upload(ModelIds.getItemModelId(DyedVoidItems.END_VOID), TextureMap.all(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
-        Models.GENERATED.upload(ModelIds.getItemModelId(DyedVoidItems.DUMMY_END_PORTAL), TextureMap.all(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
+        Models.GENERATED.upload(ModelIds.getItemModelId(DyedVoidItems.DUMMY_END_PORTAL), TextureMap.layer0(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
         Models.CUBE_ALL.upload(ModelIds.getItemModelId(DyedVoidItems.DUMMY_END_GATEWAY), TextureMap.all(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
 
         itemModelGenerator.register(DyedVoidItems.VOID_BOTTLE_ITEM, Models.GENERATED);
