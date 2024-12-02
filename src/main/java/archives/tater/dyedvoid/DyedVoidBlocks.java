@@ -8,13 +8,12 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 public class DyedVoidBlocks {
 
     private static Block register(String name, Block block) {
-        return Registry.register(Registries.BLOCK, new Identifier(DyedVoid.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, DyedVoid.id(name), block);
     }
 
     private static Block registerVoidBlock(@Nullable String colorName, boolean luminant) {
@@ -58,7 +57,7 @@ public class DyedVoidBlocks {
     ));
     public static final BlockEntityType<EndVoidBlock.EndVoidBlockEntity> END_VOID_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
-            new Identifier(DyedVoid.MOD_ID, "end_void"),
+            DyedVoid.id("end_void"),
             FabricBlockEntityTypeBuilder.create(EndVoidBlock.EndVoidBlockEntity::new, END_VOID).build()
     );
 
@@ -82,7 +81,7 @@ public class DyedVoidBlocks {
             END_VOID
     };
 
-    public static final TagKey<Block> VOID_BLOCKS_TAG = TagKey.of(RegistryKeys.BLOCK, new Identifier(DyedVoid.MOD_ID, "void_blocks"));
+    public static final TagKey<Block> VOID_BLOCKS_TAG = TagKey.of(RegistryKeys.BLOCK, DyedVoid.id("void_blocks"));
 
     public static void initialize() {}
 }

@@ -22,7 +22,7 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
                 DyedVoidItems.VOID_BOTTLE_ITEM
         ).add(DyedVoidItems.VOID_BLOCKS);
 
-        getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, new Identifier("create", "upright_on_belt")))
+        getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, Identifier.of("create", "upright_on_belt")))
                 .add(DyedVoidItems.VOID_BOTTLE_ITEM);
     }
 }

@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class DyedVoidSounds {
     private static SoundEvent register(String path) {
-        Identifier identifier = new Identifier(DyedVoid.MOD_ID, path);
+        Identifier identifier = DyedVoid.id(path);
         return Registry.register(Registries.SOUND_EVENT, identifier, SoundEvent.of(identifier));
     }
 

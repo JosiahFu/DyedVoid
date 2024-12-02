@@ -15,6 +15,9 @@ public class DyedVoid implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
     public static final Logger LOGGER = LoggerFactory.getLogger("dyedvoid");
 
+	public static Identifier id(String path) {
+		return Identifier.of(MOD_ID, path);
+	}
 
 	@Override
 	public void onInitialize() {
@@ -26,7 +29,7 @@ public class DyedVoid implements ModInitializer {
 		DyedVoidItems.initalize();
 
 		ResourceManagerHelper.registerBuiltinResourcePack(
-				new Identifier(MOD_ID, "whitespace"),
+				id("whitespace"),
 				FabricLoader.getInstance().getModContainer(MOD_ID).get(),
 				ResourcePackActivationType.NORMAL
 		);

@@ -18,8 +18,8 @@ public class ModelGenerator extends FabricModelProvider {
         super(output);
     }
 
-    private static final Model VOID_BLOCK_MODEL = new Model(Optional.of(new Identifier(DyedVoid.MOD_ID, "block/void_block")), Optional.empty(), TextureKey.ALL);
-    private static final Model VOID_ITEM_MODEL = new Model(Optional.of(new Identifier(DyedVoid.MOD_ID, "item/void_block")), Optional.empty());
+    private static final Model VOID_BLOCK_MODEL = new Model(Optional.of(DyedVoid.id("block/void_block")), Optional.empty(), TextureKey.ALL);
+    private static final Model VOID_ITEM_MODEL = new Model(Optional.of(DyedVoid.id("item/void_block")), Optional.empty());
     private static final TexturedModel.Factory VOID_BLOCK_FACTORY = TexturedModel.makeFactory(TextureMap::all, VOID_BLOCK_MODEL);
 
     @Override
@@ -28,7 +28,7 @@ public class ModelGenerator extends FabricModelProvider {
             if (block == DyedVoidBlocks.END_VOID) continue; // Skip
             blockStateModelGenerator.registerSingleton(block, VOID_BLOCK_FACTORY);
         }
-        blockStateModelGenerator.registerBuiltinWithParticle(DyedVoidBlocks.END_VOID, new Identifier(DyedVoid.MOD_ID, "empty"));
+        blockStateModelGenerator.registerBuiltinWithParticle(DyedVoidBlocks.END_VOID, DyedVoid.id("empty"));
     }
 
     @Override

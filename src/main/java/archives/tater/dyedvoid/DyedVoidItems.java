@@ -19,7 +19,7 @@ public class DyedVoidItems {
     }
 
     private static Item register(String path, Item item) {
-        return register(new Identifier(DyedVoid.MOD_ID, path), item);
+        return register(DyedVoid.id(path), item);
     }
 
     private static Item registerBlockItem(Block block, Item.Settings settings) {
@@ -102,9 +102,9 @@ public class DyedVoidItems {
     public static final Item DUMMY_END_PORTAL = register(new Identifier("dyedvoid/dummy/end_portal"), new BlockItem(Blocks.END_PORTAL, new FabricItemSettings()));
     public static final Item DUMMY_END_GATEWAY = register(new Identifier("dyedvoid/dummy/end_gateway"), new BlockItem(Blocks.END_GATEWAY, new FabricItemSettings()));
 
-    public static final TagKey<Item> NO_GRAVITY_TAG = TagKey.of(RegistryKeys.ITEM, new Identifier(DyedVoid.MOD_ID, "no_gravity"));
+    public static final TagKey<Item> NO_GRAVITY_TAG = TagKey.of(RegistryKeys.ITEM, DyedVoid.id("no_gravity"));
 
     public static void initalize() {
-        Registry.register(Registries.ITEM_GROUP, new Identifier(DyedVoid.MOD_ID, "item_group"), DyedVoidItems.ITEM_GROUP);
+        Registry.register(Registries.ITEM_GROUP, DyedVoid.id("item_group"), DyedVoidItems.ITEM_GROUP);
     }
 }
