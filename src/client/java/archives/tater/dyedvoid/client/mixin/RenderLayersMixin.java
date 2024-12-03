@@ -1,6 +1,6 @@
 package archives.tater.dyedvoid.client.mixin;
 
-import archives.tater.dyedvoid.DyedVoidItems;
+import archives.tater.dyedvoid.DyedVoidClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderLayers;
 import net.minecraft.item.ItemStack;
@@ -17,15 +17,10 @@ public class RenderLayersMixin {
             cancellable = true
     )
     private static void modifyVoidItemLayers(ItemStack stack, boolean direct, CallbackInfoReturnable<RenderLayer> cir) {
-        if (stack.isOf(DyedVoidItems.END_VOID) || stack.isOf(DyedVoidItems.DUMMY_END_PORTAL) || stack.isOf(DyedVoidItems.DUMMY_END_GATEWAY)) {
+        if (DyedVoidClient.isPortalRendered(stack)) {
             cir.setReturnValue(RenderLayer.getEndPortal());
             return;
         }
-        for (var item : DyedVoidItems.VOID_BLOCKS) {
-            if (stack.isOf(item)) {
-                cir.setReturnValue(RenderLayer.getSolid());
-                return;
-            }
-        }
+        if (DyedVoidClient.isFlatRendered(stack)) cir.setReturnValue(RenderLayer.getSolid());
     }
 }

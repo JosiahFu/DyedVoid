@@ -25,7 +25,7 @@ public class ModelGenerator extends FabricModelProvider {
             if (block == DyedVoidBlocks.END_VOID) continue; // Skip
             blockStateModelGenerator.registerSingleton(block, VOID_BLOCK_FACTORY);
         }
-        blockStateModelGenerator.registerBuiltinWithParticle(DyedVoidBlocks.END_VOID, DyedVoid.id("empty"));
+        blockStateModelGenerator.registerBuiltinWithParticle(DyedVoidBlocks.END_VOID, DyedVoid.id("block/empty"));
     }
 
     @Override
