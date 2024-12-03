@@ -4,15 +4,16 @@ import archives.tater.dyedvoid.DyedVoidBlocks;
 import archives.tater.dyedvoid.DyedVoidItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryWrapper;
 
 import java.util.Map;
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
 import static java.util.Map.entry;
 
@@ -34,12 +35,12 @@ public class RecipeGenerator extends FabricRecipeProvider {
             entry(DyedVoidItems.RED_VOID, Items.RED_DYE)
     );
 
-    public RecipeGenerator(FabricDataOutput output) {
-        super(output);
+    public RecipeGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+        super(output, registriesFuture);
     }
 
     @Override
-    public void generate(Consumer<RecipeJsonProvider> exporter) {
+    public void generate(RecipeExporter exporter) {
         dyes.forEach((voidItem, dyeItem) -> ShapelessRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, voidItem, 8)
                 .input(DyedVoidItems.WHITE_VOID, 4)
                 .input(dyeItem)

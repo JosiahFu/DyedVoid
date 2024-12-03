@@ -4,17 +4,20 @@ import archives.tater.dyedvoid.DyedVoidItems;
 import archives.tater.dyedvoid.DyedVoidSounds;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.registry.RegistryWrapper.WrapperLookup;
+
+import java.util.concurrent.CompletableFuture;
 
 import static net.minecraft.util.Util.createTranslationKey;
 
 public class LangGenerator extends FabricLanguageProvider {
 
-    public LangGenerator(FabricDataOutput dataOutput) {
-        super(dataOutput);
+    public LangGenerator(FabricDataOutput dataOutput, CompletableFuture<WrapperLookup> registryLookup) {
+        super(dataOutput, registryLookup);
     }
 
     @Override
-    public void generateTranslations(TranslationBuilder translationBuilder) {
+    public void generateTranslations(WrapperLookup registriesLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(DyedVoidItems.VOID_BOTTLE_ITEM, "Bottle of Void");
         translationBuilder.add(DyedVoidItems.BLACK_VOID, "Void Block");
         translationBuilder.add(DyedVoidItems.WHITE_VOID, "Luminous Void Block");

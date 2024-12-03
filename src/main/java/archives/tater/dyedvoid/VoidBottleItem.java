@@ -37,7 +37,7 @@ public class VoidBottleItem extends Item {
     }
 
     @Override
-    public int getMaxUseTime(ItemStack stack) {
+    public int getMaxUseTime(ItemStack stack, LivingEntity user) {
         return MAX_USE_TIME;
     }
 

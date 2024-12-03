@@ -1,7 +1,6 @@
 package archives.tater.dyedvoid;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
@@ -17,12 +16,12 @@ public class DyedVoidBlocks {
     }
 
     private static Block registerVoidBlock(@Nullable String colorName, boolean luminant) {
-        FabricBlockSettings settings = FabricBlockSettings.create()
+        var settings = AbstractBlock.Settings.create()
                 .strength(0)
                 .hardness(3)
                 .emissiveLighting((state, world, pos) -> true)
                 .sounds(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
-                .luminance(luminant ? 15 : 0)
+                .luminance(luminant ? state -> 15 : state -> 0)
                 .noBlockBreakParticles();
 
         return register(colorName == null ? "void" : colorName + "_void", new Block(settings));
@@ -49,7 +48,7 @@ public class DyedVoidBlocks {
     public static final Block MAGENTA_VOID = registerVoidBlock("magenta");
     public static final Block PINK_VOID = registerVoidBlock("pink");
 
-    public static final Block END_VOID = register("end_void", new EndVoidBlock(FabricBlockSettings.create()
+    public static final Block END_VOID = register("end_void", new EndVoidBlock(AbstractBlock.Settings.create()
             .strength(0)
             .hardness(3)
             .sounds(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
@@ -58,7 +57,7 @@ public class DyedVoidBlocks {
     public static final BlockEntityType<EndVoidBlock.EndVoidBlockEntity> END_VOID_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
             DyedVoid.id("end_void"),
-            FabricBlockEntityTypeBuilder.create(EndVoidBlock.EndVoidBlockEntity::new, END_VOID).build()
+            BlockEntityType.Builder.create(EndVoidBlock.EndVoidBlockEntity::new, END_VOID).build()
     );
 
     public static final Block[] VOID_BLOCKS = {

@@ -3,7 +3,7 @@
   "package": "archives.tater.dyedvoid.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "EndGatewayBlockEntityMixin",
+    "EndGatewayBlockMixin",
     "EndPortalBlockMixin",
     "GlassBottleItemMixin",
     "ItemEntityMixin"

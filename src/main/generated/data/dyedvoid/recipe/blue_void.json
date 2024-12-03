@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "dye_void_block",
+  "ingredients": [
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "minecraft:blue_dye"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    },
+    {
+      "item": "dyedvoid:white_void"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "id": "dyedvoid:blue_void"
+  }
+}

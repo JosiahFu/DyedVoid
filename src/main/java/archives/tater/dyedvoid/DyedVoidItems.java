@@ -1,6 +1,5 @@
 package archives.tater.dyedvoid;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -27,7 +26,7 @@ public class DyedVoidItems {
     }
 
     private static Item registerBlockItem(Block block) {
-        return registerBlockItem(block, new FabricItemSettings());
+        return registerBlockItem(block, new Item.Settings());
     }
 
     public static final Item WHITE_VOID = registerBlockItem(DyedVoidBlocks.WHITE_VOID);
@@ -69,7 +68,7 @@ public class DyedVoidItems {
             END_VOID
     };
 
-    public static final Item VOID_BOTTLE_ITEM = register("void_bottle", new VoidBottleItem(new FabricItemSettings()
+    public static final Item VOID_BOTTLE_ITEM = register("void_bottle", new VoidBottleItem(new Item.Settings()
             .maxCount(16)
             .recipeRemainder(Items.GLASS_BOTTLE)
     ));
@@ -99,8 +98,8 @@ public class DyedVoidItems {
             })
             .build();
 
-    public static final Item DUMMY_END_PORTAL = register(new Identifier("dyedvoid/dummy/end_portal"), new BlockItem(Blocks.END_PORTAL, new FabricItemSettings()));
-    public static final Item DUMMY_END_GATEWAY = register(new Identifier("dyedvoid/dummy/end_gateway"), new BlockItem(Blocks.END_GATEWAY, new FabricItemSettings()));
+    public static final Item DUMMY_END_PORTAL = register(Identifier.ofVanilla("dyedvoid/dummy/end_portal"), new BlockItem(Blocks.END_PORTAL, new Item.Settings()));
+    public static final Item DUMMY_END_GATEWAY = register(Identifier.ofVanilla("dyedvoid/dummy/end_gateway"), new BlockItem(Blocks.END_GATEWAY, new Item.Settings()));
 
     public static final TagKey<Item> NO_GRAVITY_TAG = TagKey.of(RegistryKeys.ITEM, DyedVoid.id("no_gravity"));
 

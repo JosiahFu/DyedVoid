@@ -1,7 +1,7 @@
-// 1.20.1	2024-12-03T01:28:36.488110764	The Dyed Void/Tags for minecraft:block
-742e38bcbcfd82a6ccc025e1347f2e885fe8af60 data/minecraft/tags/blocks/mineable/shovel.json
-87c6b3f935b59e99004394a83570525edb1bbfba data/dyedvoid/tags/blocks/void_blocks.json
-742e38bcbcfd82a6ccc025e1347f2e885fe8af60 data/minecraft/tags/blocks/mineable/hoe.json
-742e38bcbcfd82a6ccc025e1347f2e885fe8af60 data/minecraft/tags/blocks/mineable/axe.json
-742e38bcbcfd82a6ccc025e1347f2e885fe8af60 data/minecraft/tags/blocks/mineable/pickaxe.json
-742e38bcbcfd82a6ccc025e1347f2e885fe8af60 data/minecraft/tags/blocks/needs_iron_tool.json
+// 1.21.1	2024-12-03T01:52:07.334603625	The Dyed Void/Tags for minecraft:block
+b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/needs_iron_tool.json
+b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/pickaxe.json
+b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/shovel.json
+b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/hoe.json
+b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/axe.json
+ddb2d53bf3bf38c51103d55b9fe75022c17816ec data/dyedvoid/tags/block/void_blocks.json
