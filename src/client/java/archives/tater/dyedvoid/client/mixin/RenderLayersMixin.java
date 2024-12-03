@@ -16,9 +16,16 @@ public class RenderLayersMixin {
             at = @At("HEAD"),
             cancellable = true
     )
-    private static void usePortal(ItemStack stack, boolean direct, CallbackInfoReturnable<RenderLayer> cir) {
+    private static void modifyVoidItemLayers(ItemStack stack, boolean direct, CallbackInfoReturnable<RenderLayer> cir) {
         if (stack.isOf(DyedVoidItems.END_VOID) || stack.isOf(DyedVoidItems.DUMMY_END_PORTAL) || stack.isOf(DyedVoidItems.DUMMY_END_GATEWAY)) {
-            cir.setReturnValue(RenderLayer.getEndGateway());
+            cir.setReturnValue(RenderLayer.getEndPortal());
+            return;
+        }
+        for (var item : DyedVoidItems.VOID_BLOCKS) {
+            if (stack.isOf(item)) {
+                cir.setReturnValue(RenderLayer.getSolid());
+                return;
+            }
         }
     }
 }
